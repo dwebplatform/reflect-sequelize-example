@@ -1,9 +1,10 @@
 const { injectionContainer } = require('./injections');
-(async () => {
-  const apartmentService = injectionContainer.apartmentService;
-  const apartments = (await apartmentService.getAllApartments()).map(item => item.description);
-  console.log({ apartments })
-  const subwayService = injectionContainer.subwayService;
-  const subways = (await subwayService.getAllSubWays()).map((item) => item.title);
-  console.log({ subways })
-})();
+
+
+const express = require('express')
+const app = express()
+const port = 5000;
+
+require('./routes/subway.route')(app);
+app.listen(port, () => {
+})
